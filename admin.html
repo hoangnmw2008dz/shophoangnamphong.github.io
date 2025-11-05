@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin - Xác nhận Topup</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <div class="container" style="max-width:1000px;margin-top:20px;">
+    <h2>Admin panel</h2>
+    <p>Login admin (mặc định: <b>admin</b> / <b>hoangnamphong1962008</b>)</p>
+
+    <div id="adminLoginArea">
+      <input id="admUser" placeholder="username" />
+      <input id="admPass" placeholder="password" type="password" />
+      <button class="btn" id="admLoginBtn">Login</button>
+    </div>
+
+    <div id="adminArea" style="display:none;margin-top:16px;">
+      <h3>Pending Topups</h3>
+      <div id="pendingList"></div>
+
+      <h3>Users</h3>
+      <div id="usersList"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    const ADMIN_USER = "admin";
+    const ADMIN_PASS = "hoangnamphong1962008";
+
+    window.appAdminLogin = (user, pass) => {
+      return user === ADMIN_USER && pass === ADMIN_PASS;
+    };
+
+    document.getElementById('admLoginBtn').addEventListener('click', () => {
+      const u = document.getElementById('admUser').value.trim();
+      const p = document.getElementById('admPass').value;
+      if(window.appAdminLogin(u,p)){
+        document.getElementById('adminLoginArea').style.display='none';
+        document.getElementById('adminArea').style.display='block';
+        window.renderAdminPending();
+        window.renderAdminUsers();
+      } else {
+        alert('Sai tài khoản hoặc mật khẩu!');
+      }
+    });
+  </script>
+</body>
+</html>

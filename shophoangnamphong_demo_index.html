@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop HoangNamPhong - Demo</title>
+  <style>
+    :root{--purple-1:#6b2b82;--purple-2:#9b4bd6;--accent:#ff6b35;--card:#ffffffcc}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:linear-gradient(180deg,var(--purple-1),#3b1a4a);color:#111}
+    /* container */
+    .wrap{max-width:1200px;margin:20px auto;padding:18px}
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--purple-2),var(--purple-1));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{color:white;margin:0 8px;text-decoration:none;font-weight:600}
+    .btn-login{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;text-decoration:none}
+
+    /* main layout */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+    .video-card{background:var(--card);border-radius:12px;padding:12px;overflow:hidden}
+    iframe{width:100%;height:360px;border:0;border-radius:8px}
+    .top-panel{background:linear-gradient(180deg,#fff,#fff);border-radius:12px;padding:12px}
+    .top-panel h3{margin:0 0 8px 0}
+    .top-list{list-style:none;padding:0;margin:6px 0}
+    .top-list li{display:flex;justify-content:space-between;padding:8px;border-radius:8px;margin-bottom:6px;background:#ffeeef}
+    .btn-nap{display:block;margin-top:10px;background:var(--accent);color:white;padding:10px;border-radius:8px;text-align:center;text-decoration:none}
+
+    /* ticker */
+    .ticker{margin:14px 0;padding:8px 12px;border-radius:999px;background:#ffffff22;color:white;display:flex;gap:12px;overflow:hidden}
+    .ticker span{background:#ffffff11;padding:6px 10px;border-radius:8px}
+
+    /* featured services */
+    .section-title{background:linear-gradient(90deg,var(--purple-2),var(--purple-1));color:white;padding:10px;border-radius:10px;margin-top:18px}
+    .products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+    .card{background:var(--card);padding:12px;border-radius:10px;display:flex;gap:12px;align-items:center}
+    .card img{width:96px;height:64px;object-fit:cover;border-radius:6px}
+    .card .meta{flex:1}
+    .price{font-weight:800;color:var(--accent);margin-top:6px}
+    .cta{background:transparent;border:1px solid var(--accent);padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--accent);font-weight:700}
+
+    /* footer */
+    footer{margin-top:28px;color:#eee;text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}iframe{height:220px}.products{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">HNP</div>
+        <div>
+          <div style="color:white;font-weight:800">Shop HoangNamPhong</div>
+          <div style="color:#ffd9ff;font-size:12px">Demo bán acc / dịch vụ Roblox</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#">Nạp Thẻ</a>
+        <a href="#">Nạp ATM/MOMO</a>
+        <a href="#">Tin tức</a>
+        <a href="#">Hướng dẫn</a>
+        <a href="#">Discord</a>
+        <a class="btn-login" href="#" id="openLogin">Đăng nhập</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/136vMkhk8XI" allowfullscreen></iframe>
+          <div class="ticker" id="ticker">
+            <!-- dynamic recent purchases -->
+          </div>
+        </div>
+
+        <div class="section-title">DỊCH VỤ NỔI BẬT - ĐANG GIẢM GIÁ</div>
+        <div class="products" id="products">
+          <!-- products injected here -->
+        </div>
+      </div>
+
+      <aside>
+        <div class="top-panel">
+          <h3>TOP NẠP T.11</h3>
+          <ul class="top-list" id="topList">
+            <!-- top list -->
+          </ul>
+          <a class="btn-nap" href="#">NẠP THẺ NGAY</a>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="top-panel">
+          <h3>PHẦN THƯỞNG</h3>
+          <div style="padding:6px">Sắp tới sẽ có <strong style="color:var(--accent)">sự kiện hot</strong>, hãy chờ nhé!!!</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Demo site — để chạy: đặt file này làm `index.html` trên repo GitHub hoặc mở Codespace và chạy `python -m http.server 8000`.
+    </footer>
+  </div>
+
+  <script>
+    // fake data
+    const recent = [
+      'xauchoboy@gmail.com đã rút thành công 210',
+      'benamphong đã mua thành công 195',
+      'cutcho179@gmail.com đã rút'
+    ];
+    const top = [
+      {name:'dua374631@gmail.com',value:'1,500,000 ₫'},
+      {name:'nguyendanh1998',value:'750,000 ₫'},
+      {name:'tamphulieutam',value:'700,000 ₫'},
+      {name:'anhquan673453',value:'500,000 ₫'},
+      {name:'khoagayloncackhit',value:'500,000 ₫'}
+    ];
+    const products = [
+      {title:'Random Bone Blossom',desc:'Gói 54Q - 54 Triệu Tỉ',price:'19,000 VNĐ',img:'https://via.placeholder.com/200x120?text=Bone'},
+      {title:'Acc Có Sẵn PET Kitsune',desc:'Trong kho đỏ',price:'699,000 VNĐ',img:'https://via.placeholder.com/200x120?text=Kitsune'},
+      {title:'Dịch Vụ Grow A Garden',desc:'PET & dịch vụ',price:'Liên hệ',img:'https://via.placeholder.com/200x120?text=Grow'},
+      {title:'Dịch Vụ Plants Vs Brainrots',desc:'Siêu HOT',price:'50,000 VNĐ',img:'https://via.placeholder.com/200x120?text=PVBR'}
+    ];
+
+    // render ticker
+    const tickerEl = document.getElementById('ticker');
+    recent.forEach(r=>{const s=document.createElement('span');s.textContent=r;tickerEl.appendChild(s)});
+
+    // render top list
+    const topList = document.getElementById('topList');
+    top.forEach((t,i)=>{
+      const li = document.createElement('li');
+      li.innerHTML = `<div>#${i+1} ${t.name}</div><div style=\"font-weight:800;color:#b22222\">${t.value}</div>`;
+      topList.appendChild(li);
+    });
+
+    // render products
+    const productsEl = document.getElementById('products');
+    products.forEach(p=>{
+      const card = document.createElement('div');card.className='card';
+      card.innerHTML = `<img src='${p.img}' alt='${p.title}'/><div class='meta'><div style='font-weight:800'>${p.title}</div><div style='font-size:13px;color:#333;margin-top:4px'>${p.desc}</div><div class='price'>${p.price}</div></div><a class='cta' href='#'>XEM NGAY</a>`;
+      productsEl.appendChild(card);
+    });
+
+    // login demo modal (simple)
+    document.getElementById('openLogin').addEventListener('click',e=>{
+      e.preventDefault();
+      const user = prompt('Nhập tên đăng nhập (demo):','khachhang');
+      if(user){alert('Đăng nhập thành công: '+user)}
+    });
+  </script>
+</body>
+</html>
